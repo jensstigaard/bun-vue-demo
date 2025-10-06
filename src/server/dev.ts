@@ -1,3 +1,5 @@
+import { resolve } from "path"
+
 import express from "express"
 import ViteExpress from "vite-express"
 
@@ -8,8 +10,12 @@ const app = express()
 // Use the routes from the routes.js file
 app.use(routes)
 
-
-app.use(express.static('public'))
+app.get("/maps.pmtiles", (req, res) => {
+  const filePath = resolve(process.cwd(), "./maps.pmtiles")
+  // const filePath = resolve(__dirname, "../maps.pmtiles")
+  // console.log("Serving file:", filePath)
+  res.sendFile(filePath)
+})
 
 // app.use((req, res, next) => {
 //   // Check if the request is for a static file
@@ -19,7 +25,6 @@ app.use(express.static('public'))
 
 //     next()
 // })
-
 
 // ViteExpress.config({ mode: "production" })
 

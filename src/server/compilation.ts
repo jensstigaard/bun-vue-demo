@@ -18,6 +18,9 @@ const app = express()
 // Use the routes from the routes file
 app.use(routes)
 
+// Serve static files from this directory
+app.use(express.static("."))
+
 // Serve the static files from the staticRoutes
 app.use((req, res, next) => {
   // Check if the request is for a static file
@@ -54,6 +57,20 @@ app.use((req, res, next) => {
     return res.status(200).type(mimeType).send(decodedFile)
   }
 
+  next()
+})
+
+// Middleware to catch/handle requests to "maps.pmtiles"
+app.use((req, res, next) => {
+  // Check if the request is for a static file
+  const url = new URL(req.url, `http://${req.headers.host}`)
+  const path = url.pathname
+
+  // If the request is for the root path, serve index.html
+  if (path === "maps.pmtiles") {
+    res.status(404).send("PMTiles file found on host...")
+    return
+  }
   next()
 })
 

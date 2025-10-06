@@ -1,6 +1,6 @@
 # compile.sh
 #!/bin/bash
-
+# set -e
 # First we build the client bundle (This is the vue/vite part)
 echo " "
 echo " "

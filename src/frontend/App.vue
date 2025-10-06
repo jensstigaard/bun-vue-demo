@@ -24,6 +24,7 @@
         <v-icon>mdi-magnify</v-icon>
       </v-btn>
       <v-list-item to="/">Hjem</v-list-item>
+      <v-list-item to="/map">Kort</v-list-item>
       <v-list-item to="/list">Liste</v-list-item>
       <!-- <router-link to="/home">
         <v-btn text>Home</v-btn>

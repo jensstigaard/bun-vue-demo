@@ -157,6 +157,6 @@ dist-ssr
 
 bundle
 
-.exe
+*.exe
 
-.pmtiles
+*.pmtiles

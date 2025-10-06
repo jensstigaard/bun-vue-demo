@@ -6,7 +6,7 @@ echo " "
 echo " "
 echo "--------------------------------------"
 echo "Starting Vite build...."
-bun run vite-build
+vite build
 echo "Client bundle built successfully."
 echo "--------------------------------------"
 echo " "

@@ -160,3 +160,5 @@ bundle
 *.exe
 
 *.pmtiles
+
+*.bun-build

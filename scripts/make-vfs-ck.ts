@@ -15,6 +15,8 @@ import { readFile } from "fs/promises"
 const args = process.argv.slice(2)
 const argMap: Record<string, string> = {}
 
+const IGNORE_LIST = ["maps.pmtiles"]
+
 for (let i = 0; i < args.length; i++) {
   if (args[i].startsWith("--") && i + 1 < args.length) {
     const key = String(args[i].slice(2))
@@ -49,6 +51,11 @@ async function traverseDirectory(dir: string, baseDir: string = dir) {
       } else {
         // Get relative path
         const relativePath = relative(baseDir, fullPath).replace(/\\/g, "/") // Normalize slashes to forward
+
+        if (IGNORE_LIST.includes(entry.name)) {
+          console.log(`Ignored: ${relativePath}`)
+          continue
+        }
 
         try {
           // Read file as binary data

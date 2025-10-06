@@ -6,7 +6,7 @@ echo " "
 echo " "
 echo "--------------------------------------"
 echo "Starting Vite build...."
-vite build
+bun run vite-build
 echo "Client bundle built successfully."
 echo "--------------------------------------"
 echo " "
@@ -23,6 +23,6 @@ echo " "
 echo "--------------------------------------"
 echo "Starting BUN build...."
 # finaly we build the server bundle. this is the bun part.
-bun build ./src/server/comp.ts --compile --outfile my-app
+bun build ./src/server/compilation.ts --compile --outfile my-app
 echo "Bun server+VFS bundle built successfully."
 echo "--------------------------------------"

@@ -3,14 +3,17 @@
 // 1. Compile the project using bun run build
 // 2. Once built, run : bunx make-vfs --dir ./dist --content-format string --outfile ./src/client-bundle-vfs.js
 
+// Bun / Node.js core libraries
 import { resolve } from "path"
-// First we need to
-// @ts-ignore
-import staticRoutes from "../../bundle/client-bundle-vfs.ts"
+
+// Express web server
+import express from "express"
 
 import { lookup } from "es-mime-types"
 
-import express from "express"
+// It is neccesary to import the frontend related files which is bundled in a generated VFS
+// @ts-ignore
+import staticRoutes from "../../bundle/client-bundle-vfs.ts"
 
 import routes from "./routes/router.ts"
 

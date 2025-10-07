@@ -13,6 +13,9 @@ import "leaflet/dist/leaflet.css"
 
 import router from "./router"
 
+// Custom styles
+import "./style.css"
+
 // Leaflet components global registration
 const leafletComponents = {
   LMap,

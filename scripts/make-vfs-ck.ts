@@ -15,8 +15,12 @@ import { readFile } from "fs/promises"
 const args = process.argv.slice(2)
 const argMap: Record<string, string> = {}
 
+/**
+ * List of files to ignore and not include in the bundle
+ */
 const IGNORE_LIST = ["maps.pmtiles"]
 
+// Iterate over args and populate argMap
 for (let i = 0; i < args.length; i++) {
   if (args[i].startsWith("--") && i + 1 < args.length) {
     const key = String(args[i].slice(2))
@@ -25,9 +29,10 @@ for (let i = 0; i < args.length; i++) {
   }
 }
 
+// Guard no dir
 if (!argMap.dir) {
   console.error("Error: --dir argument is required")
-  console.error("Usage: bun bundle-to-base64.js --dir <directory> [--outfile <output_file>]")
+  console.error("Usage: bun make-vfs-ck.ts --dir <directory> [--outfile <output_file>]")
   process.exit(1)
 }
 

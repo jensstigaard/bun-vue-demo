@@ -6,21 +6,28 @@ import { createVuetify } from "vuetify"
 import * as components from "vuetify/components"
 import * as directives from "vuetify/directives"
 
+// Leaflet
 import L from "leaflet"
 import { LMap, LTileLayer, LMarker } from "@vue-leaflet/vue-leaflet"
 import "leaflet/dist/leaflet.css"
 
 import router from "./router"
 
+// Leaflet components global registration
+const leafletComponents = {
+  LMap,
+  LTileLayer,
+  LMarker,
+}
+
 // Components
 import App from "./App.vue"
 
 const vuetify = createVuetify({
+  // Register components globally, including Vuetify and Leaflet
   components: {
     ...components,
-    LMap,
-    LTileLayer,
-    LMarker,
+    ...leafletComponents,
   },
   directives,
   icons: {
